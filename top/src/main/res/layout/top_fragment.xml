@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/nestedScrollView_Fragment_TOP"
+        android:fillViewport="true"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imageViewFundoUniv"
+                android:layout_height="120dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="TOP"
+                android:textSize="28sp"
+                android:layout_marginStart="18dp"
+                android:textStyle="bold"
+                android:elevation="5dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView_fragment_biblioteca_2"
+                android:layout_marginTop="30dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imageView"
+                android:layout_height="150dp">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/linearLayout"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/back_default"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <androidx.viewpager.widget.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/viewPager_fragment_TOP"
+                    android:elevation="3dp"
+                    android:layout_height="220dp">
+
+                </androidx.viewpager.widget.ViewPager>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout_dots_fragment_top"
+                    android:layout_width="match_parent"
+                    app:tabBackground="@drawable/dots_tab_selected"
+                    app:tabGravity="center"
+                    android:elevation="3dp"
+                    app:tabIndicatorHeight="0dp"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <!--               Começo dos tops Artistas                          -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="240dp"
+                        android:layout_height="50dp"
+                        android:text="Top Artistas"
+                        android:ellipsize="end"
+                        android:id="@+id/textView_topArtista"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:visibility="visible"
+                        android:elevation="3dp"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <include
+                        android:id="@+id/loading_layout"
+                        layout="@layout/loading_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="81dp"
+                        tools:visibility="gone"
+                        >
+                    </include>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/recyclerViewTopArtistas"
+                        android:layout_height="140dp">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Mais ..."
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:elevation="3dp"
+                    android:maxLines="1"
+                    android:id="@+id/tv_ver_mais_top"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:text="Gêneros e Momentos"
+                    android:ellipsize="end"
+                    android:id="@+id/textView_generos"
+                    android:layout_marginTop="35dp"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:elevation="3dp"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:elevation="3dp"
+                    android:id="@+id/recyclerViewGeneros_fragment_top"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:text="Países"
+                    android:ellipsize="end"
+                    android:id="@+id/textView_paises"
+                    android:layout_marginTop="35dp"
+                    android:gravity="center"
+                    android:elevation="3dp"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:elevation="3dp"
+                    android:id="@+id/recyclerViewPaises_fragment_top"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
