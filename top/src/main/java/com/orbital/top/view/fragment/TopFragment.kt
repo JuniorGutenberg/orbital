@@ -48,9 +48,7 @@ class TopFragment:Fragment(), ITopArtistaContract.ITopArtistaView{
             binding.loadingLayout.visibility = View.VISIBLE
             binding.recyclerViewTopArtistas.visibility = View.GONE
             present.getTopArtista(it)
-
         }
-
         return binding.root
     }
     private fun initComponents(){
