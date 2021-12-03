@@ -3,15 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app-navigator/src/main/res/drawable/back_bottom_navigation.xml" value="0.209375" />
+        <entry key="app-navigator/src/main/res/layout/toolbar_navigation.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/back_bottom_navigation.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/backgroun.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/home_activity.xml" value="0.2" />
+        <entry key="biblioteca/src/main/res/layout/biblioteca_fragment.xml" value="0.19322916666666667" />
+        <entry key="biblioteca/src/main/res/layout/biblioteca_item.xml" value="0.19322916666666667" />
+        <entry key="core/src/main/res/drawable/back_default.xml" value="0.209375" />
         <entry key="orbital-ui/src/main/res/layout/loading_items.xml" value="0.19322916666666667" />
+        <entry key="perfil/src/main/res/layout/perfil_fragment.xml" value="0.19322916666666667" />
+        <entry key="perfil/src/main/res/layout/perfil_item.xml" value="0.19322916666666667" />
         <entry key="top/src/main/res/drawable/back_default.xml" value="0.209375" />
         <entry key="top/src/main/res/drawable/dots_tab_indicator_default.xml" value="0.209375" />
         <entry key="top/src/main/res/drawable/dots_tab_indicator_selected.xml" value="0.209375" />
         <entry key="top/src/main/res/drawable/dots_tab_selected.xml" value="0.209375" />
+        <entry key="top/src/main/res/layout/banners_item.xml" value="0.19322916666666667" />
         <entry key="top/src/main/res/layout/generos_momentos_items.xml" value="0.19322916666666667" />
         <entry key="top/src/main/res/layout/top_artistas_item.xml" value="0.19322916666666667" />
         <entry key="top/src/main/res/layout/top_fragment.xml" value="0.19322916666666667" />

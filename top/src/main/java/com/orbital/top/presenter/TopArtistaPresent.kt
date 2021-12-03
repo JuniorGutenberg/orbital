@@ -2,6 +2,7 @@ package com.orbital.top.presenter
 
 import android.app.Activity
 import com.android.volley.VolleyError
+import com.orbital.top.dto.BannersDTO
 import com.orbital.top.dto.CallBack
 import com.orbital.top.dto.PaisesDTO
 import com.orbital.top.dto.TopArtistasDTO
@@ -61,6 +62,22 @@ class TopArtistaPresent @Inject constructor(view:ITopArtistaContract.ITopArtista
                 getView()?.onErrorJSONPaises(error)
             }
 
+        })
+    }
+
+    override fun getBanners(activity: Activity) {
+        topArtistasService.getBanners(activity, object: CallBack<List<BannersDTO>,VolleyError>{
+            override fun onSucess(response: List<BannersDTO>) {
+                getView()?.onSucessBanners(response)
+            }
+
+            override fun onError(error: VolleyError) {
+                getView()?.onErrorBanners(error)
+            }
+
+            override fun onErrorJSON(error: JSONException) {
+                getView()?.onErrorJSONBanners(error)
+            }
         })
     }
 }

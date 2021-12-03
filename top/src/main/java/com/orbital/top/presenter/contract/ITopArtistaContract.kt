@@ -2,6 +2,7 @@ package com.orbital.top.presenter.contract
 
 import android.app.Activity
 import com.android.volley.VolleyError
+import com.orbital.top.dto.BannersDTO
 import com.orbital.top.dto.CallBack
 import com.orbital.top.dto.PaisesDTO
 import com.orbital.top.dto.TopArtistasDTO
@@ -20,12 +21,15 @@ interface ITopArtistaContract {
         fun onSucessPaises(response: List<PaisesDTO>)
         fun onErrorPaises(error: VolleyError)
         fun onErrorJSONPaises(error:JSONException)
+
+        fun onSucessBanners(response: List<BannersDTO>)
+        fun onErrorBanners(error: VolleyError)
+        fun onErrorJSONBanners(error:JSONException)
     }
     interface ITopArtistaPresent{
         fun getTopArtista(activity: Activity)
         fun getGenerosMomentos(activity: Activity)
         fun getPaises(activity: Activity)
-
-
+        fun getBanners(activity: Activity)
     }
 }
