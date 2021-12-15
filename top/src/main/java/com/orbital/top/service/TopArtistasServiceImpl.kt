@@ -294,53 +294,6 @@ class TopArtistasServiceImpl:BaseService(),TopArtistasService {
         requestQueues[0]?.add(stringRequests[0])
     }
 
-    fun getInfoArtista(activity: Activity, arrayList: ArrayList<String>):List<TopArtistasDTO>{
-        var image:String = ""
-        val items:MutableList<TopArtistasDTO> = arrayListOf()
-        var artista = ""
-
-        val thread = Thread {
-            try {
-                for (i in arrayList.indices) {
-                    artista = arrayList[i]
-
-                    var doc: Document? = null
-
-                    try {
-                        doc = Jsoup.connect("https://www.last.fm/music/$artista/+images").get()
-                        val elementsByTag: org.jsoup.select.Elements = doc.getElementsByTag("meta")
-                        for ((i2, element) in elementsByTag.withIndex()) {
-                            if (i2 == 9) {
-                                if (!element.attr("content").contains("2a96cbd8b46e442fc41c2b86b821562f")) {
-                                    image = element.attr("content")
-                                }
-                            }
-                        }
-                        if (artista != null) {
-                            if (artista != "" && image != "") {
-                                if (!image.contains("2a96cbd8b46e442fc41c2b86b821562f")) {
-                                    items.add(TopArtistasDTO(artista,image))
-                                    Log.e("GET_TOP","onSucess")
-                                }
-                            }
-                        }
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                }
-            } catch (e: java.lang.Exception) {
-                e.printStackTrace()
-            }
-        }
-
-        thread.run()
-        thread.join()
-
-
-        return items
-    }
-
-
 }
 class getInfoArtistas(private var arrayList: ArrayList<String>, private var callback:CallBack<List<TopArtistasDTO>,VolleyError>): AsyncTask<String, String, MutableList<TopArtistasDTO>>() {
     var image:String = ""

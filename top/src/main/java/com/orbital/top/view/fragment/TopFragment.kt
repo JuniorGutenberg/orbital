@@ -33,6 +33,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.viewpager.widget.ViewPager
 import com.orbital.app_navigator.view.activity.ToolbarActivity
 import jp.wasabeef.picasso.transformations.BlurTransformation
+import java.util.*
 
 
 class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.ITopArtistaView{
@@ -75,7 +76,7 @@ class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.
     }
     private fun initComponents(){
         binding.apply {
-            Picasso.with(context).load(R.drawable.universe_600).transform(BlurTransformation(context,4,1)).fit().centerCrop().into(imageView)
+            Picasso.with(context).load(R.drawable.universe_600).fit().centerCrop().into(imageView)
             initRecylces()
             initNestedScroll()
         }

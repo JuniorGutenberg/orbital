@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.orbital.biblioteca.view.fragment.BibliotecaFragment
+import com.orbital.buscar.view.fragment.BuscarFragment
+import com.orbital.para_voce.view.fragment.ParaVoceFragment
 import com.orbital.perfil.view.fragment.PerfilFragment
 import com.orbital.top.view.fragment.TopFragment
 
@@ -28,7 +30,12 @@ class ViewPagerAdapter(@NonNull private var fm:FragmentManager, private var tool
         if(position == 0){
             return PerfilFragment()
         }
-
+        if(position == 3){
+            return ParaVoceFragment(toolbar)
+        }
+        if(position == 4){
+            return BuscarFragment(toolbar)
+        }
         return Fragment()
 
     }

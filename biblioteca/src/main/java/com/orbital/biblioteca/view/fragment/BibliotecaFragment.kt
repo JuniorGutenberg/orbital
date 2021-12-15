@@ -35,7 +35,7 @@ class BibliotecaFragment:Fragment() {
     }
     private fun initComponents(){
         binding.apply {
-            Picasso.with(context).load(R.drawable.universe_600).transform(BlurTransformation(context,4,1)).centerCrop().fit().into(imageView)
+            Picasso.with(context).load(R.drawable.universe_600).centerCrop().fit().into(imageView)
         }
     }
     private fun initRecycler(){

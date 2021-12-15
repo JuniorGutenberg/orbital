@@ -13,8 +13,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app-navigator" />
             <option value="$PROJECT_DIR$/biblioteca" />
+            <option value="$PROJECT_DIR$/buscar" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/orbital-ui" />
+            <option value="$PROJECT_DIR$/para-voce" />
             <option value="$PROJECT_DIR$/perfil" />
             <option value="$PROJECT_DIR$/top" />
           </set>

@@ -1,5 +1,6 @@
 package com.orbital.orbital.view.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -141,12 +142,13 @@ class HomeActivity: AppCompatActivity() {
                     layoutParams.setMargins(0, 0, 0, 110)
                     binding.viewPager.layoutParams = layoutParams
                 }
-                val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager,binding.toolbarNewMain.toolbarNewMain)
 
-                binding.viewPager.adapter = viewPagerAdapter
-                binding.viewPager.currentItem = 2
                 val handlerVP = Handler(mainLooper)
                 handlerVP.post {
+                    val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager,binding.toolbarNewMain.toolbarNewMain)
+
+                    binding.viewPager.adapter = viewPagerAdapter
+                    binding.viewPager.currentItem = 2
                     binding.viewPager.offscreenPageLimit = 3
                 }
             }

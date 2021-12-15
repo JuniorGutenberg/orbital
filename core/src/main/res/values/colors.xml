@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey_dark">#424242</color>
     <color name="principal">#ff2f01</color>
     <color name = "colorPrimary" tools:ignore="MissingDefaultResource">#000000</color>
     <color name = "colorAccent" tools:ignore="MissingDefaultResource">#FFFFFFFF</color>

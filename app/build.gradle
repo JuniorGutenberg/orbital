@@ -52,6 +52,8 @@ dependencies {
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'jp.wasabeef:picasso-transformations:2.2.1'
+    implementation project(path: ':para-voce')
+    implementation project(path: ':buscar')
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
