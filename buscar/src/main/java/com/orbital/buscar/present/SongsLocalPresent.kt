@@ -27,7 +27,9 @@ class SongsLocalPresent @Inject constructor(view: ISongsLocalContract.ISongsLoca
         songsLocalService.getSongsOnline(key, activity, object: CallbackOnline<List<OnlineDTO>,IOException>{
             override fun onSucess(response: List<OnlineDTO>) {
                 getView().onSucessOnline(response)
-                response[0].ytId?.let { getRelacionados(it, activity) }
+                if(response.isNotEmpty()){
+                    response[0].ytId?.let { getRelacionados(it, activity) }
+                }
             }
 
             override fun onError(error: IOException) {

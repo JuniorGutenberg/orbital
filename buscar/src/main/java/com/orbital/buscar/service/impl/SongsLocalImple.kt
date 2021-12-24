@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.AsyncTask
 import android.provider.MediaStore
+import android.util.Log
 import android.webkit.MimeTypeMap
 import com.orbital.buscar.dto.*
 import com.orbital.buscar.service.SongsLocalService
@@ -129,9 +130,24 @@ class SongsLocalImple:BaseService(),SongsLocalService {
                     var line = iterator.next()
 
                     if (line.contains("ytInitialData = {")) {
-                        line = line.substring(line.indexOf("tents\":[{\"vi") + 7)
-                        line = line.substring(0, line.indexOf("}]}}],\"trackingParams\""))+"}]}}]"
-                        OnlineAsync(line,calllback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+                        try{
+                            /**
+                             * Caso Sorriso Marato: Ao salvar  a pagina html, o codigo vem diferente, por isso os detalhes mudam,
+                             *  poode acontecer com mais pesquisas
+                             * */
+                            if(line.contains("tents\":[{\"vi")){
+                                line = line.substring(line.indexOf("tents\":[{\"vi") + 7)
+                                line = line.substring(0, line.indexOf("}]}}],\"trackingParams\""))+"}]}}]"
+                                OnlineAsync(line,calllback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+                            }else if(line.contains("}},{\"videoRenderer\":{\"")){
+                                line = line.substring(line.indexOf("}},{\"videoRenderer\":{\"") + 3)
+                                line = "["+line.substring(0, line.indexOf("}]}}],\"trackingParams\""))+"}]}}]"
+                                OnlineAsync(line,calllback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+                            }
+
+                        }catch (e: Exception){
+                            Log.e("Error Lines:",e.toString())
+                        }
                     }
                 }
                 input.close()
@@ -164,9 +180,13 @@ class SongsLocalImple:BaseService(),SongsLocalService {
                     var line = iterator.next()
 
                     if (line.contains(",{\"itemSectionRenderer\":{\"contents\":")) {
-                        line = line.substring(line.indexOf("results\":[{\"compact") + 10)
-                        line = line.substring(0, line.indexOf(",{\"continuationItemRenderer\""))
-                        RelacionadosAsync(line,calllback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+                        try {
+                            line = line.substring(line.indexOf("results\":[{\"compact") + 10)
+                            line = line.substring(0, line.indexOf(",{\"continuationItemRenderer\""))
+                            RelacionadosAsync(line,calllback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+                        }catch (e: Exception){
+                            Log.e("Error Lines:",e.toString())
+                        }
                     }
                 }
                 input.close()
@@ -222,10 +242,7 @@ class SongsLocalImple:BaseService(),SongsLocalService {
         val url = "https://www.youtube.com/watch?v=$key"
         return url.replace(" ","%20")
     }
-    private fun getUrlArtista(key:String):String{
-        val url = "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=$key&api_key=1af5ba4e64c1bdb88199b41e109e6ecf&format=json"
-        return url.replace("#","")
-    }
+
     private fun convertDuration(duration: Long): String {
         var out = ""
         val hours: Long = try {

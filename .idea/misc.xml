@@ -9,6 +9,10 @@
         <entry key="app/src/main/res/drawable/backgroun.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/home_activity.xml" value="0.2" />
+        <entry key="artistas/src/main/res/layout/artista_activity.xml" value="0.17" />
+        <entry key="artistas/src/main/res/layout/artista_relacionados_item.xml" value="0.13903985507246377" />
+        <entry key="artistas/src/main/res/layout/top_albuns_item.xml" value="0.13903985507246377" />
+        <entry key="artistas/src/main/res/layout/top_track_item.xml" value="0.13903985507246377" />
         <entry key="biblioteca/src/main/res/layout/biblioteca_fragment.xml" value="0.19322916666666667" />
         <entry key="biblioteca/src/main/res/layout/biblioteca_item.xml" value="0.19322916666666667" />
         <entry key="buscar/src/main/res/layout/artista_item.xml" value="0.13903985507246377" />
@@ -16,7 +20,12 @@
         <entry key="buscar/src/main/res/layout/online_item.xml" value="0.33" />
         <entry key="buscar/src/main/res/layout/songs_local_item.xml" value="0.33" />
         <entry key="core/src/main/res/drawable/back_buscar.xml" value="0.209375" />
+        <entry key="core/src/main/res/drawable/back_button_laranja.xml" value="0.209375" />
+        <entry key="core/src/main/res/drawable/back_circular_laranja.xml" value="0.209375" />
         <entry key="core/src/main/res/drawable/back_default.xml" value="0.209375" />
+        <entry key="core/src/main/res/drawable/back_toolbar.xml" value="0.209375" />
+        <entry key="core/src/main/res/drawable/click_button_effect.xml" value="0.209375" />
+        <entry key="core/src/main/res/drawable/ripple_seta.xml" value="0.209375" />
         <entry key="core/src/main/res/drawable/rounded_dark.xml" value="0.209375" />
         <entry key="core/src/main/res/drawable/rounded_white.xml" value="0.209375" />
         <entry key="core/src/main/res/layout/complete_item.xml" value="1.0964285714285715" />

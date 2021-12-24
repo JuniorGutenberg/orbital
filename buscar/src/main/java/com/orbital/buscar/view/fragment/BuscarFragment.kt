@@ -9,13 +9,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
@@ -76,7 +74,7 @@ class BuscarFragment(private var toolbar: Toolbar):Fragment(), ISongsLocalContra
         binding.apply {
             Picasso.with(context).load(R.drawable.universe_600).centerCrop().fit().into(imageView)
             changeColorDrawable()
-
+            initVisibility()
             ivBuscar.setOnClickListener {
                 if(autoComplete.text.isNotEmpty()){
                     pesquisar(autoComplete.text.toString())
@@ -88,6 +86,14 @@ class BuscarFragment(private var toolbar: Toolbar):Fragment(), ISongsLocalContra
             }
             initRecyclers()
 
+        }
+    }
+    private fun initVisibility(){
+        binding.apply {
+            tvArtistas.visibility = View.GONE
+            tvRelacionadas.visibility   =   View.GONE
+            tvOnline.visibility =   View.GONE
+            tvSuasMusicas.visibility    =   View.GONE
         }
     }
     private fun initRecyclers(){
@@ -163,16 +169,14 @@ class BuscarFragment(private var toolbar: Toolbar):Fragment(), ISongsLocalContra
                     pesquisar(autoComplete.text.toString())
                 }
 
-                autoComplete.setOnEditorActionListener(object : TextView.OnEditorActionListener{
-                    override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean {
-                        if(p1 == EditorInfo.IME_ACTION_SEARCH){
-                            activity?.let { it1 -> KeyboardUtils.hideKeyboard(it1) }
-                            autoComplete.clearFocus()
-                            pesquisar(autoComplete.text.toString())
-                        }
-                        return false
+                autoComplete.setOnEditorActionListener { _, p1, _ ->
+                    if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                        activity?.let { it1 -> KeyboardUtils.hideKeyboard(it1) }
+                        autoComplete.clearFocus()
+                        pesquisar(autoComplete.text.toString())
                     }
-                })
+                    false
+                }
             }
         }
     }
@@ -211,7 +215,14 @@ class BuscarFragment(private var toolbar: Toolbar):Fragment(), ISongsLocalContra
         activity?.runOnUiThread {
             binding.apply {
                 tvPermission.visibility = View.GONE
-                rvSuasMusicas.adapter = context?.let { SongsLocalAdapter(response, it) }
+                if(response.isNotEmpty()){
+                    rvSuasMusicas.adapter = context?.let { SongsLocalAdapter(response, it) }
+                    rvSuasMusicas.visibility = View.VISIBLE
+                    tvSuasMusicas.visibility    =   View.VISIBLE
+                }else{
+                    rvSuasMusicas.visibility = View.GONE
+                    tvSuasMusicas.visibility    =   View.GONE
+                }
             }
         }
     }
@@ -225,55 +236,115 @@ class BuscarFragment(private var toolbar: Toolbar):Fragment(), ISongsLocalContra
     override fun onSucessOnline(response: List<OnlineDTO>) {
         activity?.runOnUiThread {
             binding.apply {
-                rvOnline.adapter = context?.let { OnlineAdapter(response, it) }
+                if(response.isNotEmpty()){
+                    rvOnline.adapter = context?.let { OnlineAdapter(response, it) }
+                    rvOnline.visibility = View.VISIBLE
+                    tvOnline.visibility =   View.VISIBLE
+                }else{
+                    rvOnline.visibility = View.GONE
+                    tvOnline.visibility =   View.GONE
+                }
             }
         }
     }
 
     override fun onErrorOnline(error: IOException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvOnline.visibility = View.GONE
+                tvOnline.visibility =   View.GONE
+            }
+        }
     }
 
     override fun onErrorJSONOnline(error: JSONException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvOnline.visibility = View.GONE
+                tvOnline.visibility =   View.GONE
+            }
+        }
     }
 
     override fun onSucessRelacionados(response: List<OnlineDTO>) {
         activity?.runOnUiThread {
             binding.apply {
-                rvRelacionadas.adapter = context?.let { OnlineAdapter(response, it) }
+                if(response.isNotEmpty()){
+                    rvRelacionadas.adapter = context?.let { OnlineAdapter(response, it) }
+                    rvRelacionadas.visibility = View.VISIBLE
+                    tvRelacionadas.visibility =   View.VISIBLE
+                }else{
+                    rvRelacionadas.visibility = View.GONE
+                    tvRelacionadas.visibility =   View.GONE
+                }
             }
         }
     }
 
     override fun onErrorRelacionados(error: IOException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvRelacionadas.visibility = View.GONE
+                tvRelacionadas.visibility =   View.GONE
+            }
+        }
     }
 
     override fun onErrorJSONRelacionados(error: JSONException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvRelacionadas.visibility = View.GONE
+                tvRelacionadas.visibility =   View.GONE
+            }
+        }
     }
 
     override fun onSucessArtista(response: List<ArtistaDTO>) {
         activity?.runOnUiThread {
             binding.apply {
-                rvArtistas.adapter = context?.let { ArtistaAdapter(response, it) }
+                if(response.isNotEmpty()){
+                    rvArtistas.adapter = context?.let { ArtistaAdapter(response, it) }
+                    rvArtistas.visibility = View.VISIBLE
+                    tvArtistas.visibility =   View.VISIBLE
+                }else{
+                    rvArtistas.visibility = View.GONE
+                    tvArtistas.visibility =   View.GONE
+                }
             }
         }
     }
 
     override fun onErrorArtista(error: IOException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvArtistas.visibility = View.GONE
+                tvArtistas.visibility =   View.GONE
+            }
+        }
     }
 
     override fun onErrorJSONArtista(error: JSONException) {
+        activity?.runOnUiThread {
+            binding.apply {
+                rvArtistas.visibility = View.GONE
+                tvArtistas.visibility =   View.GONE
+            }
+        }
     }
 
     private fun checkPermissionLocal(activity: Activity){
         if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
            activity.runOnUiThread {
                binding.tvPermission.visibility = View.VISIBLE
-
+               binding.rvSuasMusicas.visibility    =   View.VISIBLE
+               binding.tvSuasMusicas.visibility    =   View.VISIBLE
            }
 
         }else{
             activity.runOnUiThread {
                 binding.tvPermission.visibility = View.GONE
+                binding.rvSuasMusicas.visibility    =   View.GONE
+                binding.tvSuasMusicas.visibility    =   View.GONE
 
             }
         }
