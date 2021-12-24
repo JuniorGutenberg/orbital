@@ -43,10 +43,17 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'jp.wasabeef:picasso-transformations:2.2.1'
+
+
 
     //Libs
     implementation project(':core')
     implementation project(':orbital-ui')
+    implementation project(':app-navigator')
+    implementation project(':artistas')
+
+
 
 
     //Volley

@@ -25,6 +25,7 @@
                 android:textSize="28sp"
                 android:layout_marginStart="18dp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:elevation="5dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView_fragment_biblioteca_2"
@@ -39,27 +40,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:id="@+id/linearLayout"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="100dp"
                 android:background="@drawable/back_default"
                 android:visibility="visible"
                 android:orientation="vertical"
                 android:layout_height="match_parent">
                 <androidx.viewpager.widget.ViewPager
                     android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:id="@+id/viewPager_fragment_TOP"
+                    android:id="@+id/vp"
                     android:elevation="3dp"
                     android:layout_height="220dp">
 
                 </androidx.viewpager.widget.ViewPager>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout_dots_fragment_top"
+                    android:id="@+id/tab"
                     android:layout_width="match_parent"
                     app:tabBackground="@drawable/dots_tab_selected"
                     app:tabGravity="center"
                     android:elevation="3dp"
+                    android:visibility="gone"
+                    android:backgroundTint="@color/black"
                     app:tabIndicatorHeight="0dp"
                     android:layout_height="wrap_content">
 
@@ -141,7 +145,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:elevation="3dp"
-                    android:id="@+id/recyclerViewGeneros_fragment_top"
+                    android:id="@+id/rv_generos"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
@@ -166,7 +170,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:elevation="3dp"
-                    android:id="@+id/recyclerViewPaises_fragment_top"
+                    android:id="@+id/rvPaises"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
                 </androidx.recyclerview.widget.RecyclerView>

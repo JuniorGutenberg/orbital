@@ -1,5 +1,7 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
@@ -11,3 +13,9 @@ include ':app'
 include ':core'
 include ':orbital-ui'
 include ':top'
+include ':app-navigator'
+include ':biblioteca'
+include ':perfil'
+include ':para-voce'
+include ':buscar'
+include ':artistas'

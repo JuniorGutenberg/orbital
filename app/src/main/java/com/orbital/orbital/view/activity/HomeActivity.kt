@@ -1,11 +1,14 @@
 package com.orbital.orbital.view.activity
 
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +18,10 @@ import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.viewpager.widget.ViewPager
 import com.orbital.orbital.databinding.HomeActivityBinding
-import com.orbital.orbital.view.adapter.ViewPagerAdapter
 import com.orbital.orbital.R
+import com.orbital.orbital.view.adapter.ViewPagerAdapter
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.BlurTransformation
 
 class HomeActivity: AppCompatActivity() {
     private lateinit var binding: HomeActivityBinding
@@ -33,11 +38,14 @@ class HomeActivity: AppCompatActivity() {
         binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         setDrawable()
         initViewPager()
         setScrollViewPager()
         onClickRelative()
         initComponents()
+        changeStatusBar()
     }
     private fun initComponents(){
         binding.apply {
@@ -52,11 +60,11 @@ class HomeActivity: AppCompatActivity() {
         drawableBuscar = AppCompatResources.getDrawable(this, R.drawable.ic_search)
 
         binding.apply {
-            ivPerfil.setImageDrawable(drawablePerfil)
-            ivBiblioteca.setImageDrawable(drawableBiblioteca)
-            ivTop.setImageDrawable(drawableTop)
-            ivParaVoce.setImageDrawable(drawableParaVoce)
-            ivBuscar.setImageDrawable(drawableBuscar)
+            toolbarNewMain.ivPerfil.setImageDrawable(drawablePerfil)
+            toolbarNewMain.ivBiblioteca.setImageDrawable(drawableBiblioteca)
+            toolbarNewMain.ivTop.setImageDrawable(drawableTop)
+            toolbarNewMain.ivParaVoce.setImageDrawable(drawableParaVoce)
+            toolbarNewMain.ivBuscar.setImageDrawable(drawableBuscar)
         }
     }
     private fun setScrollViewPager(){
@@ -85,27 +93,28 @@ class HomeActivity: AppCompatActivity() {
         }
     }
     private fun onClickRelative(){
-        binding.rlPerfil.setOnClickListener {
+        binding.toolbarNewMain.rlPerfil.setOnClickListener {
             binding.viewPager.currentItem = 0
         }
 
-        binding.rlBiblioteca.setOnClickListener {
+        binding.toolbarNewMain.rlBiblioteca.setOnClickListener {
             binding.viewPager.currentItem = 1
         }
 
-        binding.rlTop.setOnClickListener {
+        binding.toolbarNewMain.rlTop.setOnClickListener {
             binding.viewPager.currentItem = 2
         }
-        binding.rlParaVoce.setOnClickListener {
+        binding.toolbarNewMain.rlParaVoce.setOnClickListener {
             binding.viewPager.currentItem = 3
         }
 
-        binding.rlBuscar.setOnClickListener {
+        binding.toolbarNewMain.rlBuscar.setOnClickListener {
             binding.viewPager.currentItem = 4
         }
     }
     private fun changeColor(position : Int){
-        val text: ArrayList<TextView> = arrayListOf(binding.tvPerfil,binding.tvBiblioteca,binding.tvTop,binding.tvParaVoce,binding.tvBuscar)
+        val text: ArrayList<TextView> = arrayListOf(binding.toolbarNewMain.tvPerfil,binding.toolbarNewMain.tvBiblioteca,
+            binding.toolbarNewMain.tvTop,binding.toolbarNewMain.tvParaVoce,binding.toolbarNewMain.tvBuscar)
         val drawable: ArrayList<Drawable> = arrayListOf(drawablePerfil!!,drawableBiblioteca!!,drawableTop!!,drawableParaVoce!!,drawableBuscar!!)
         for (i in 0 until 5) {
             if(i == position){
@@ -133,22 +142,43 @@ class HomeActivity: AppCompatActivity() {
                     layoutParams.setMargins(0, 0, 0, 110)
                     binding.viewPager.layoutParams = layoutParams
                 }
-                val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-                binding.viewPager.adapter = viewPagerAdapter
-                binding.viewPager.currentItem = 2
+
                 val handlerVP = Handler(mainLooper)
                 handlerVP.post {
+                    val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager,binding.toolbarNewMain.toolbarNewMain)
+
+                    binding.viewPager.adapter = viewPagerAdapter
+                    binding.viewPager.currentItem = 2
                     binding.viewPager.offscreenPageLimit = 3
                 }
             }
         }.start()
     }
-    private fun hideToolbar() {
-        binding.toolbarNewMain.clearAnimation()
-        binding.toolbarNewMain.animate().translationY(binding.toolbarNewMain.height.toFloat()).duration = 200
+    private fun changeStatusBar(){
+
+        if (Build.VERSION.SDK_INT in 19..20) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        }
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+            window?.statusBarColor = Color.TRANSPARENT
+        }
+    }
+    private fun setWindowFlag(bits: Int, on: Boolean) {
+        val win = window
+        val winParams = win?.attributes
+        if (on) {
+            winParams?.flags = winParams?.flags?.or(bits)
+        } else {
+            winParams?.flags = winParams?.flags?.and(bits.inv())
+        }
+        win?.attributes = winParams
     }
     private fun showToolbar() {
-        binding.toolbarNewMain.clearAnimation()
-        binding.toolbarNewMain.animate().translationY(0f).duration = 200
+        binding.toolbarNewMain.toolbarNewMain.clearAnimation()
+        binding.toolbarNewMain.toolbarNewMain.animate().translationY(0f).duration = 200
     }
 }
