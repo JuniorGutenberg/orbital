@@ -3,4 +3,7 @@
     package="com.orbital.top">
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <application>
+        <activity android:name=".view.activity.GenerosMainActivity"/>
+    </application>
 </manifest>

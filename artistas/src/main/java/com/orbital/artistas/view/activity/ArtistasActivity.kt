@@ -18,6 +18,7 @@ import com.orbital.artistas.view.adapter.ArtistaRelacionadosAdapter
 import com.orbital.artistas.view.adapter.TopAlbunsAdapter
 import com.orbital.artistas.view.adapter.TopTrackAdapter
 import com.orbital.core.utils.StringUtils
+import com.orbital.orbital_ui.component.ORelativeLayoutBackPressed
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 import org.json.JSONException

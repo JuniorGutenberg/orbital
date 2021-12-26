@@ -45,6 +45,8 @@ dependencies {
 
     //Modules
     implementation project(':core')
+    implementation project(':orbital-ui')
+
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'

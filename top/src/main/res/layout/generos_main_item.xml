@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="5dp"
+    android:paddingBottom="25dp"
+    android:paddingEnd="5dp"
+    android:paddingStart="5dp"
+    android:layout_height="wrap_content">
+    <com.github.siyamed.shapeimageview.RoundedImageView
+        android:id="@+id/riv"
+        app:siRadius="8dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"/>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:layout_below="@id/riv"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_alignEnd="@id/riv"
+        android:layout_alignStart="@id/riv"
+        android:ellipsize="end"
+        android:text="Ritmo ttim"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

@@ -52,6 +52,8 @@ dependencies {
     implementation project(':orbital-ui')
     implementation project(':app-navigator')
     implementation project(':artistas')
+    implementation project(':playlist')
+
 
 
 

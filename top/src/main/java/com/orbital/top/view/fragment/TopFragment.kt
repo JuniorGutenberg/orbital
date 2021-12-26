@@ -32,8 +32,6 @@ import javax.inject.Inject
 import androidx.core.widget.NestedScrollView
 import androidx.viewpager.widget.ViewPager
 import com.orbital.app_navigator.view.activity.ToolbarActivity
-import jp.wasabeef.picasso.transformations.BlurTransformation
-import java.util.*
 
 
 class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.ITopArtistaView{
