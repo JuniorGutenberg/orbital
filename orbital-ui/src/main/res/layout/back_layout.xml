@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentInsetLeft="0dp"
+    android:id="@+id/rl"
     app:contentInsetStart="0dp"
     android:layout_marginTop="25dp"
     android:layout_width="match_parent"
@@ -11,10 +12,12 @@
     <com.orbital.orbital_ui.component.ORelativeLayoutBackPressed
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/rl"
+        android:clickable="true"
+        android:id="@+id/rl_back"
         android:background="@drawable/click_button_effect"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:focusable="true">
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"

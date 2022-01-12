@@ -32,8 +32,15 @@
         <entry key="core/src/main/res/layout/back_layout.xml" value="0.25" />
         <entry key="core/src/main/res/layout/complete_item.xml" value="1.0964285714285715" />
         <entry key="core/src/main/res/layout/toolbar_player_layout.xml" value="0.13903985507246377" />
+        <entry key="machine/src/main/res/layout/machine_main_activity.xml" value="0.25" />
+        <entry key="machine/src/main/res/layout/search_artist_item.xml" value="0.25" />
+        <entry key="machine/src/main/res/layout/selecionados_item.xml" value="0.5" />
         <entry key="orbital-ui/src/main/res/drawable/back_buscar.xml" value="0.209375" />
+        <entry key="orbital-ui/src/main/res/drawable/back_buscar_desativado.xml" value="0.209375" />
+        <entry key="orbital-ui/src/main/res/drawable/back_circular_desativado.xml" value="0.209375" />
+        <entry key="orbital-ui/src/main/res/drawable/back_circular_laranja.xml" value="0.209375" />
         <entry key="orbital-ui/src/main/res/layout/back_layout.xml" value="0.19322916666666667" />
+        <entry key="orbital-ui/src/main/res/layout/loading.xml" value="0.13903985507246377" />
         <entry key="orbital-ui/src/main/res/layout/loading_items.xml" value="0.19322916666666667" />
         <entry key="orbital-ui/src/main/res/layout/toolbar_player_layout.xml" value="1.0" />
         <entry key="para-voce/src/main/res/layout/artista_item.xml" value="0.19322916666666667" />

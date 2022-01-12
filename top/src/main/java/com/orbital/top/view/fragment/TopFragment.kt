@@ -63,7 +63,7 @@ class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.
 
 
         activity?.let {
-            binding.loadingLayout.visibility = View.VISIBLE
+            binding.loadingLayout.cl.visibility = View.VISIBLE
             binding.recyclerViewTopArtistas.visibility = View.GONE
             present.getBanners(it)
             present.getGenerosMomentos(it)
@@ -148,7 +148,7 @@ class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.
     override fun onSucessTop(response: List<TopArtistasDTO>) {
         activity?.runOnUiThread {
             binding.apply {
-                loadingLayout.visibility = View.GONE
+                loadingLayout.cl.visibility = View.GONE
                 recyclerViewTopArtistas.visibility = View.VISIBLE
                 tvVerMaisTop.visibility = View.VISIBLE
 
@@ -160,7 +160,7 @@ class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.
     override fun onErrorTop(error: VolleyError) {
         activity?.runOnUiThread {
             binding.apply {
-                loadingLayout.visibility = View.GONE
+                loadingLayout.cl.visibility = View.GONE
                 Log.e("Error Volley","error")
             }
         }
@@ -169,7 +169,7 @@ class TopFragment(private var toolbar: Toolbar):Fragment(), ITopArtistaContract.
     override fun onErrorJSONTop(error: JSONException) {
         activity?.runOnUiThread {
             binding.apply {
-                loadingLayout.visibility = View.GONE
+                loadingLayout.cl.visibility = View.GONE
                 Log.e("Error JSON","error")
             }
         }

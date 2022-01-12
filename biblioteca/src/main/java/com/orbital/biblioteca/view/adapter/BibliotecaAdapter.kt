@@ -9,7 +9,7 @@ import com.orbital.biblioteca.view.adapter.viewholder.BibliotecaViewHolder
 
 class BibliotecaAdapter(private var items:List<String>,private var context: Context):RecyclerView.Adapter<BibliotecaViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BibliotecaViewHolder {
-        return BibliotecaViewHolder(BibliotecaItemBinding.inflate(LayoutInflater.from(context)))
+        return BibliotecaViewHolder(BibliotecaItemBinding.inflate(LayoutInflater.from(context)),context)
     }
 
     override fun onBindViewHolder(holder: BibliotecaViewHolder, position: Int) {

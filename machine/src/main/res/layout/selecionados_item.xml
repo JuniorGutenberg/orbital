@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingStart="2dp"
+    android:paddingEnd="5dp"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="20dp"
+        android:layout_marginTop="4dp"
+        android:elevation="5dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_delete"
+        android:layout_height="20dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_height="wrap_content">
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:id="@+id/civ"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+    </RelativeLayout>
+</FrameLayout>

@@ -59,7 +59,6 @@ class ArtistasRelacionadosAsync(private var url:String, private var callBack: Ca
                        10
                     }
                     for (i in 0 until tam) {
-                        Log.d("TEXTMEBACK", i.toString())
                         val resultArtist = artist.getJSONObject(i)
                         name = resultArtist.getString("name")
                         artistas.add(name)

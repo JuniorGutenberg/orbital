@@ -28,7 +28,7 @@ class ArtistaPart2Async(private var context: Context, private var items: List<St
     override fun doInBackground(vararg p0: String?): List<ArtistaDTO> {
         Collections.shuffle(items)
         for(i in 0 until items.size){
-            var s1: String = items.get(i)
+            var s1: String = items[i]
             s1 = s1.replace("-", "+")
             s1 = s1.replace("#", "")
             val okHttpClient = OkHttpClient()
@@ -51,23 +51,19 @@ class ArtistaPart2Async(private var context: Context, private var items: List<St
                 e.printStackTrace()
             }
             try {
-                if (line != null) {
-                    if (line != "") {
-                        jsonObject =
-                            JSONObject(line.substring(line.indexOf("{"), line.lastIndexOf("}") + 1))
-                    }
+                if (line != "") {
+                    jsonObject =
+                        JSONObject(line.substring(line.indexOf("{"), line.lastIndexOf("}") + 1))
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-            if (jsonObject != null) {
-                try {
-                    val artist: JSONObject = jsonObject.getJSONObject("artist")
-                    name = artist.getString("name")
-                    setImages(name)
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
+            try {
+                val artist: JSONObject = jsonObject.getJSONObject("artist")
+                name = artist.getString("name")
+                setImages(name)
+            } catch (e: JSONException) {
+                e.printStackTrace()
             }
         }
         return itemsArtistas
